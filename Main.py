@@ -1,4 +1,19 @@
-usuarios = []
+import json
+
+
+
+def CarregarUsuarios():
+     try:
+          with open("usuarios.json", "r") as arquivo:
+            return json.load(arquivo)
+     except FileNotFoundError:
+                return []
+
+usuarios = CarregarUsuarios()
+
+def SalvarUsuarios(usuarios):
+    with open("usuarios.json", "w") as arquivo:
+        json.dump(usuarios, arquivo, indent=4)
 
 def CadastrarUsuario(usuarios):
     nome = input("Digite o nome: ")
@@ -10,6 +25,7 @@ def CadastrarUsuario(usuarios):
         }
 
     usuarios.append(usuario)
+    SalvarUsuarios(usuarios)
         
     print("usario cadastrado com sucesso!")
 
@@ -39,7 +55,10 @@ def RemoverUsuario(usuarios):
         if user["nome"].lower() == nome_remover:
             usuarios.remove(user)
             
+            SalvarUsuarios(usuarios)
             print(f"Usuário {user['nome']} removido com sucesso.")
+            return
+    print("Usuário não encontrado.")
         
 
 
