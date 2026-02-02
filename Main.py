@@ -19,14 +19,25 @@ while True:
 
 
     elif opcao == "2":
-        print("Buscar")
+        busca = input("Digite o nome do usuário que deseja buscar: ").lower()
+        encontrado = False
+
+        for user in usuarios:
+            if user['nome'].lower() == busca:
+                print(f"Usuário encontrado: Nome: {user['nome']}, Idade: {user['idade']}")
+                encontrado = True
+                
+        if not encontrado:
+            print("Usuário não encontrado.")
+
+        
 
     elif opcao == "3":
         if not usuarios:
             print("Nenhum usuário cadastrado.")
         else:
-            for usuario in usuarios:
-                print(f"Nome: {usuario['nome']}, Idade: {usuario['idade']}")
+            for user in usuarios:
+                print(f"Nome: {user['nome']}, Idade: {user['idade']}")
         
 
 
