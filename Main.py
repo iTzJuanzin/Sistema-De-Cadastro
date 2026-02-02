@@ -16,7 +16,7 @@ def SalvarUsuarios(usuarios):
         json.dump(usuarios, arquivo, indent=4)
 
 def CadastrarUsuario(usuarios):
-    nome = input("Digite o nome: ")
+    nome = input("Digite o nome: ").strip()
     idade = int(input("Digite a idade: "))
 
     usuario = {
@@ -30,7 +30,7 @@ def CadastrarUsuario(usuarios):
     print("usario cadastrado com sucesso!")
 
 def BuscarUsuario(usuarios):
-    busca = input("Digite o nome do usuário que deseja buscar: ").lower()
+    busca = input("Digite o nome do usuário que deseja buscar: ").lower().strip()
     encontrado = False
 
     for user in usuarios:
@@ -49,15 +49,17 @@ def ListarUsuarios(usuarios):
             print(f"Nome: {user['nome']}, Idade: {user['idade']}")
 
 def RemoverUsuario(usuarios):
-    nome_remover = input("Digite o nome do usuário que deseja remover: ").lower()
+    nome_remover = input("Digite o nome do usuário que deseja remover: ").lower().strip()
         
     for user in usuarios:
+
+
         if user["nome"].lower() == nome_remover:
             usuarios.remove(user)
-            
             SalvarUsuarios(usuarios)
             print(f"Usuário {user['nome']} removido com sucesso.")
             return
+        
     print("Usuário não encontrado.")
         
 
