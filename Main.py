@@ -4,7 +4,8 @@ while True:
     print("selecione uma opção")
     opcao = input("[1]Cadastrar , [2]Buscar, [3]Listar, [4]Remover, [5]Sair: ")
 
-    if opcao == "1":
+
+    if opcao == "1": # Cadastrar
         nome = input("Digite o nome: ")
         idade = int(input("Digite a idade: "))
 
@@ -18,7 +19,8 @@ while True:
         print("usario cadastrado com sucesso!")
 
 
-    elif opcao == "2":
+
+    elif opcao == "2": # Buscar
         busca = input("Digite o nome do usuário que deseja buscar: ").lower()
         encontrado = False
 
@@ -32,7 +34,7 @@ while True:
 
         
 
-    elif opcao == "3":
+    elif opcao == "3": # Listar
         if not usuarios:
             print("Nenhum usuário cadastrado.")
         else:
@@ -41,9 +43,18 @@ while True:
         
 
 
-    elif opcao == "4":
-        print("Remover")
-    elif opcao == "5":
+    elif opcao == "4": # Remover
+        nome_remover = input("Digite o nome do usuário que deseja remover: ").lower()
+        
+        for user in usuarios:
+            if user["nome"].lower() == nome_remover:
+                usuarios.remove(user)
+                print(f"Usuário {user['nome']} removido com sucesso.")
+
+
+
+    
+    elif opcao == "5":# Sair
         print("Sair")
         break
     else:
