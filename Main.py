@@ -1,23 +1,28 @@
 usuarios = []
 
+def CadastrarUsuario(usuarios):
+    nome = input("Digite o nome: ")
+    idade = int(input("Digite a idade: "))
+
+    usuario = {
+            "nome": nome, 
+            "idade": idade
+        }
+
+    usuarios.append(usuario)
+        
+    print("usario cadastrado com sucesso!")
+
+
+
 while True:
     print("selecione uma opção")
     opcao = input("[1]Cadastrar , [2]Buscar, [3]Listar, [4]Remover, [5]Sair: ")
 
 
     if opcao == "1": # Cadastrar
-        nome = input("Digite o nome: ")
-        idade = int(input("Digite a idade: "))
-
-        usuario = {
-            "nome": nome, 
-            "idade": idade
-        }
-
-        usuarios.append(usuario)
         
-        print("usario cadastrado com sucesso!")
-
+        CadastrarUsuario(usuarios)
 
 
     elif opcao == "2": # Buscar
